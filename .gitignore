@@ -1,5 +1,15 @@
+#Virtual Environments
 /venv
 .env
 env/
 venv/
 .venv   
+
+# Outros
+*.iml
+*.pyc
+__pycache__/
+
+# Banco de Dados
+*.sqlite
+*.db
