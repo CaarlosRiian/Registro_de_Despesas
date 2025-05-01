@@ -7,7 +7,7 @@ from .serializers import DespesaSerializer, CategoriaSerializer
 class CategotiaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
-    
+     
 class DespesaViewSet(viewsets.ModelViewSet):
     queryset = Despesa.objects.all()
     serializer_class = DespesaSerializer
