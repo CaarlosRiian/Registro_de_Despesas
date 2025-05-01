@@ -4,7 +4,7 @@ from .models import Despesa, Categoria
 from .serializers import DespesaSerializer, CategoriaSerializer
 # Create your views here.
 
-class CategotiaViewSet(videwsets.ModelViewSet):
+class CategotiaViewSet(viewsets.ModelViewSet):
     queryset = Categoria.objects.all()
     serializer_class = CategoriaSerializer
     
