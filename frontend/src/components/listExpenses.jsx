@@ -35,7 +35,7 @@ function ListExpenses(){
 
             <ul>
                 {despesas.map((despesa) => (
-                    <li key={despesa}>{despesa.descricao} - R${despesa.valor}</li>
+                    <li key={despesa}> - {despesa.descricao} - R${despesa.valor}</li>
                 ))}
             </ul>
 
