@@ -1,0 +1,94 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.customBody {
+    background-color: #1e2939;
+}   
+
+.div-form-edit-expense {
+    width: 50%;
+    height: 60%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.h1-form-edit-expense {
+    text-align: center;
+    color: #f4f4f5;
+    font-size: 35px;
+    font-family: "Inter", sans-serif;
+}
+
+.description-input-form-edit-expense {
+    margin-top: 10px;
+    margin-left: 190px;
+    padding: 10px;
+    width: 370px;
+    border-radius: 4px;
+    border: 1px solid gray;
+    background-color: #171717;
+    color: white;
+}
+
+.value-input-form-edit-expense {
+    margin-top: 10px;
+    margin-left: 190px;
+    padding: 10px;
+    width: 370px;
+    border-radius: 4px;
+    border: 1px solid gray;
+    background-color: #171717;
+    color: white;
+}
+
+.select-category-form-edit-expense {
+    margin-top: 10px;
+    margin-left: 190px;
+    padding: 10px;
+    width: 391px;
+    border-radius: 4px;
+    border: 1px solid gray;
+    background-color: #171717;
+    color: white;
+}
+
+.button-expense-edit-form {
+    background-color: #009689;
+    padding: 10px;
+    width: 390px;
+    border: none;
+    border-radius: 4px;
+    font-family: "Inter", sans-serif;
+    color: #f4f4f5;
+
+    position: absolute;
+    top: 64%;
+    left: 50.3%;
+    transform: translate(-50%, -50%);
+}
+.button-expense-edit-form:hover {
+    background-color: #00786f;
+    transition: 0.4s;
+    cursor: pointer;
+}
+
+.button-back-home-form-edit-expense {
+    padding: 7px;
+    width: 100px;
+    border: none;
+    border-radius: 4px;
+    background-color: #e7000b;
+    color: white;
+
+    position: absolute;
+    top:78%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-back-home-form-edit-expense:hover {
+    cursor: pointer;
+    background-color: #c10007;
+    transition: 0.4s;
+}

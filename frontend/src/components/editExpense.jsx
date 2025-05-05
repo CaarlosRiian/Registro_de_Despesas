@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";  
+import styles from "../styles/editExpense.module.css"
 
 function EditExpense() {
     const [descricao, setDescricao] = useState("");
@@ -9,6 +10,13 @@ function EditExpense() {
     const [categorias, setCategorias] = useState([]);
     const { id } = useParams();
     const navigate = useNavigate();
+
+    useEffect(() => {
+            document.body.classList.add(styles.customBody)
+            return () => {
+                document.body.classList.remove(styles.customBody)
+            }
+        }, [])
 
     useEffect(() => {
         async function fetchCategorias() {
@@ -51,39 +59,49 @@ function EditExpense() {
         }
     };
 
-    return (
-        <div>
-            <h1>Editar Despesa</h1>
-            <form onSubmit={handleSubmit}>
-                <input
-                    type="text"
-                    placeholder="Descrição"
-                    value={descricao}
-                    onChange={(e) => setDescricao(e.target.value)}
-                    required
-                />
-                <input
-                    type="number"
-                    placeholder="Valor"
-                    value={valor}
-                    onChange={(e) => setValor(e.target.value)}
-                    required
-                />
-                <select
-                    value={categoriaId}
-                    onChange={(e) => setCategoriaId(e.target.value)}
-                    required
-                >
-                    <option value="">Selecione uma categoria</option>
-                    {categorias.map((cat) => (
-                        <option key={cat.id} value={cat.id}>
-                            {cat.nome}
-                        </option>
-                    ))}
-                </select>
-                <button type="submit">Salvar Alterações</button>
-            </form>
-        </div>
+    const handleBack = async () => {
+        navigate("/")
+    }
+
+    return (    
+        <>
+            <div className={styles["div-form-edit-expense"]}>
+                <h1 className={styles["h1-form-edit-expense"]}>Editar Despesa</h1>
+                <form onSubmit={handleSubmit}>
+                    <input
+                        type="text"
+                        className={styles["description-input-form-edit-expense"]}
+                        placeholder="Descrição"
+                        value={descricao}
+                        onChange={(e) => setDescricao(e.target.value)}
+                        required
+                    />
+                    <input
+                        type="number"
+                        className={styles["value-input-form-edit-expense"]}
+                        placeholder="Valor"
+                        value={valor}
+                        onChange={(e) => setValor(e.target.value)}
+                        required
+                    />
+                    <select
+                        value={categoriaId}
+                        className={styles["select-category-form-edit-expense"]}
+                        onChange={(e) => setCategoriaId(e.target.value)}
+                        required
+                    >
+                        <option value="">Selecione uma categoria</option>
+                        {categorias.map((cat) => (
+                            <option key={cat.id} value={cat.id}>
+                                {cat.nome}
+                            </option>
+                        ))}
+                    </select>
+                    <button className={styles["button-expense-edit-form"]} type="submit">Salvar Alterações</button>
+                </form>
+                <button className={styles["button-back-home-form-edit-expense"]} onClick={handleBack}>Cancelar</button>
+            </div>
+        </>
     );
 }
 
