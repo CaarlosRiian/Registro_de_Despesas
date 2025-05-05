@@ -1,5 +1,6 @@
 import api from "../services/api"
 import { useState, useEffect, use } from "react"
+import axios from "axios"
 
 function ListExpenses(){
     const [despesas, setDespesas] = useState([])
@@ -28,6 +29,20 @@ function ListExpenses(){
         return <div>{error}</div>
     }
 
+    const handleDelete = async (id) => {
+        const confirmDelete = window.confirm("Tem certeza que deseja excluir esta despesa?")
+        if(confirmDelete) {
+            try {
+                await axios.delete(`http://localhost:8000/api/despesas/${id}/`)
+                setDespesas(despesas.filter(despesa => despesa.id !== id))
+            } catch (error) {
+                console.log("Erro ao deletar despesa: ", error)
+            }
+        } else {
+            console.log("Cancelouu")
+        }
+    }
+
     return (
         <>
 
@@ -35,7 +50,7 @@ function ListExpenses(){
 
             <ul>
                 {despesas.map((despesa) => (
-                    <li key={despesa}> - {despesa.descricao} - R${despesa.valor}</li>
+                    <li key={despesa.id}> - {despesa.descricao} - R${despesa.valor} - <button onClick={() => handleDelete(despesa.id)}>Excluir</button></li>
                 ))}
             </ul>
 
