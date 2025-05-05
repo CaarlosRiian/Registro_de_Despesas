@@ -12,6 +12,7 @@ function App() {
       <ListExpenses />
       <nav>
         <Link to="/categorias">Cadastrar Categoria</Link>
+        <Link to="/cadastrar_despesa">Cadastrar Despesa</Link>
       </nav>
     </>
   )
