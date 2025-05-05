@@ -1,11 +1,13 @@
 import api from "../services/api"
 import { useState, useEffect, use } from "react"
 import axios from "axios"
+import { useNavigate } from "react-router-dom"
 
 function ListExpenses(){
     const [despesas, setDespesas] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
+    const navigate = useNavigate()
 
     useEffect(() =>{
         async function fetchDespesas() {
@@ -43,6 +45,10 @@ function ListExpenses(){
         }
     }
 
+    const handleEdit = async (id) => {
+        navigate(`editar/${id}`)
+    }
+
     return (
         <>
 
@@ -50,7 +56,7 @@ function ListExpenses(){
 
             <ul>
                 {despesas.map((despesa) => (
-                    <li key={despesa.id}> - {despesa.descricao} - R${despesa.valor} - <button onClick={() => handleDelete(despesa.id)}>Excluir</button></li>
+                    <li key={despesa.id}> - {despesa.descricao} - R${despesa.valor} - <button onClick={() => handleEdit(despesa.id)}>Editar</button> <button onClick={() => handleDelete(despesa.id)}>Excluir</button></li> 
                 ))}
             </ul>
 
