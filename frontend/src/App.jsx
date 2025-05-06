@@ -1,19 +1,18 @@
 import react from "react"
-import Header from "./components/header"
 import ListExpenses from "./components/listExpenses"
 import { Link } from "react-router-dom"
+import styles from "../src/styles/app.module.css";
 
 
 function App() {
 
   return (
     <>
-      <Header />
-      <ListExpenses />
       <nav>
-        <Link to="/categorias">Cadastrar Categoria</Link>
-        <Link to="/cadastrar_despesa">Cadastrar Despesa</Link>
+        <Link to="/categorias" className={styles["cadastrar-categoria-button"]}>Cadastrar Categoria</Link>
+        <Link to="/cadastrar_despesa" className={styles["cadastrar-despesa-button"]}>Cadastrar Despesa</Link>
       </nav>
+      <ListExpenses />
     </>
   )
 }

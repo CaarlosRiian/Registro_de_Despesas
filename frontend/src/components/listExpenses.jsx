@@ -2,12 +2,20 @@ import api from "../services/api"
 import { useState, useEffect, use } from "react"
 import axios from "axios"
 import { useNavigate } from "react-router-dom"
+import styles from "../styles/listExpense.module.css"
 
 function ListExpenses(){
     const [despesas, setDespesas] = useState([])
     const [loading, setLoading] = useState(true)
     const [error, setError] = useState(null)
     const navigate = useNavigate()
+
+    useEffect(() => {
+        document.body.classList.add(styles.customBody)
+            return () => {
+                document.body.classList.remove(styles.customBody)
+            }
+    }, [])
 
     useEffect(() =>{
         async function fetchDespesas() {
@@ -51,15 +59,24 @@ function ListExpenses(){
 
     return (
         <>
-
-            <h1>Lista de Despesas</h1>
-
-            <ul>
-                {despesas.map((despesa) => (
-                    <li key={despesa.id}> - {despesa.descricao} - R${despesa.valor} - <button onClick={() => handleEdit(despesa.id)}>Editar</button> <button onClick={() => handleDelete(despesa.id)}>Excluir</button></li> 
-                ))}
-            </ul>
-
+            <div className={styles["div-list-expenses"]}>
+                <h1 className={styles["h1-list-expenses"]}>Lista de Despesas</h1>
+                <ul>
+                    {despesas.map((despesa) => (
+                        // <li key={despesa.id}> {despesa.descricao}  -  R${despesa.valor} 
+                        // <button onClick={() => handleEdit(despesa.id)} className={styles["button-edit-in-list-form"]}>Editar</button> <button onClick={() => handleDelete(despesa.id)} className={styles["button-delete-in-list-form"]}>Excluir</button></li>
+                        <li key={despesa.id}>
+                            <div className={styles["item-info"]}>
+                                {despesa.descricao} - R${despesa.valor}
+                            </div> 
+                            <div className={styles["item-buttons"]}>
+                            <button onClick={() => handleEdit(despesa.id)} className={styles["button-edit-in-list-form"]}>Editar</button>
+                            <button onClick={() => handleDelete(despesa.id)} className={styles["button-delete-in-list-form"]}>Excluir</button>
+                        </div>
+                      </li>
+                    ))}
+                </ul>
+            </div>
         </>
     )
 }

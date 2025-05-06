@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.customBody {
+    background-color: #1e2939;
+}   
+
+.div-list-expenses {
+    width: 50%;
+    height: 60%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.h1-list-expenses {
+    text-align: center;
+    color: #f4f4f5;
+    font-size: 35px;
+    font-family: "Inter", sans-serif;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  
+li {
+    background-color: #101828;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    padding: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: background-color 0.2s ease-in-out;
+    color: #f4f4f5;
+    font-family: "Inter", sans-serif;
+}
+
+.item-info {
+    flex: 1;
+    font-size: 16px;
+}
+  
+.item-buttons {
+    display: flex;
+    gap: 10px;
+}
+
+.button-edit-in-list-form {
+    background-color: #00a63e;
+    color: #f4f4f5;
+    font-family: "Inter", sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    width: 90px;
+}
+.button-edit-in-list-form:hover {
+    transition: 0.4s;
+    background-color: #008236;
+    cursor: pointer;
+}
+  
+.button-delete-in-list-form {
+    background-color: #e7000b;
+    color: #f4f4f5;
+    font-family: "Inter", sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    width: 90px;
+}
+.button-delete-in-list-form:hover {
+    transition: 0.4s;
+    background-color: #c10007;
+    cursor: pointer;
+}

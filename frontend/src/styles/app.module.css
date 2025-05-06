@@ -1,0 +1,46 @@
+.cadastrar-categoria-button {
+    background-color: #009966;
+    border: none;
+    width: 150px;
+    padding: 10px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14.5px;
+    border-radius: 4px;
+    color: white;
+
+    position: absolute;
+    top: 10%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+}
+.cadastrar-categoria-button:hover {
+    transition: 0.4s;
+    cursor: pointer;
+    background-color: #007a55;
+}
+
+.cadastrar-despesa-button {
+    background-color: #009689;
+    border: none;
+    width: 150px;
+    padding: 11px;
+    text-align: center;
+    text-decoration: none;
+    font-family: "Inter", sans-serif;
+    font-size: 14.5px;
+    border-radius: 4px;
+    color: white;
+
+    position: absolute;
+    top: 10%;
+    left: 60%;
+    transform: translate(-50%, -50%);
+}
+
+.cadastrar-despesa-button:hover {
+    transition: 0.4s;
+    cursor: pointer;
+    background-color: #00786f;
+}
