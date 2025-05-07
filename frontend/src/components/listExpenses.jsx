@@ -63,8 +63,6 @@ function ListExpenses(){
                 <h1 className={styles["h1-list-expenses"]}>Lista de Despesas</h1>
                 <ul>
                     {despesas.map((despesa) => (
-                        // <li key={despesa.id}> {despesa.descricao}  -  R${despesa.valor} 
-                        // <button onClick={() => handleEdit(despesa.id)} className={styles["button-edit-in-list-form"]}>Editar</button> <button onClick={() => handleDelete(despesa.id)} className={styles["button-delete-in-list-form"]}>Excluir</button></li>
                         <li key={despesa.id}>
                             <div className={styles["item-info"]}>
                                 {despesa.descricao} - R${despesa.valor}

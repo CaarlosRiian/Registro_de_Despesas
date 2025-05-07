@@ -100,35 +100,6 @@ function ExpenseForm() {
                 <button className={styles["button-back-home-form-expense"]} onClick={handleBack}>Voltar</button>
 
             </div>
-
-            {/* <form onSubmit={handleSubmit}>
-                <input
-                type="text"
-                placeholder="Descrição"
-                value={descricao}
-                onChange={(e) => setDescricao(e.target.value)}
-                required
-                />
-                <input
-                type="number"
-                placeholder="Valor"
-                value={valor}
-                onChange={(e) => setValor(e.target.value)}
-                required
-                />
-                <select
-                value={categoriaId}
-                onChange={(e) => setCategoriaId(e.target.value)}
-                required
-                >
-                <option value="">Selecione uma categoria</option>
-                {categorias.map((cat) => (
-                    <option key={cat.id} value={cat.id}>{cat.nome}</option>
-                ))}
-                </select>
-                <button type="submit">Cadastrar</button>
-            </form> */}
-            {mensagem && <p>{mensagem}</p>}
         </>
     )
 }
