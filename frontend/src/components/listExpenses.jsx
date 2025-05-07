@@ -65,7 +65,7 @@ function ListExpenses(){
                     {despesas.map((despesa) => (
                         <li key={despesa.id}>
                             <div className={styles["item-info"]}>
-                                {despesa.descricao} - R${despesa.valor}
+                                {despesa.categoria.nome} | {despesa.descricao} - R${despesa.valor}
                             </div> 
                             <div className={styles["item-buttons"]}>
                             <button onClick={() => handleEdit(despesa.id)} className={styles["button-edit-in-list-form"]}>Editar</button>
