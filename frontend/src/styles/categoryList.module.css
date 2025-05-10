@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+.customBody {
+    background-color: #1e2939;
+}   
+
+.button-back-in-list-category {
+    padding: 7px;
+    width: 100px;
+    border: none;
+    border-radius: 4px;
+    background-color: #00786f;
+    color: white;
+
+    position: absolute;
+    top:10%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.button-back-in-list-category:hover {
+    cursor: pointer;
+    background-color: #0b4f4a;
+    transition: 0.4s;
+}
+
+.div-list-category {
+    width: 50%;
+    height: 60%;
+
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.h1-list-category {
+    text-align: center;
+    color: #f4f4f5;
+    font-size: 35px;
+    font-family: "Inter", sans-serif;
+}
+
+.button-delete-in-list-form-category {
+    background-color: #e7000b;
+    color: #f4f4f5;
+    font-family: "Inter", sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    width: 90px;
+}
+.button-delete-in-list-form-category:hover {
+    transition: 0.4s;
+    background-color: #c10007;
+    cursor: pointer;
+}
+
