@@ -60,11 +60,17 @@ function CategoryList() {
                 <ul className={styles.list}>
                     {categorias.map(categoria => (
                         <li key={categoria.id} className={styles.item}>
-                            {categoria.nome}
-                            <button
-                                onClick={() => handleDelete(categoria.id)}
-                                className={styles["button-delete-in-list-form-category"]}
-                            >Excluir</button>
+                            <div className={styles["item-info-category"]}>
+                                {categoria.nome}
+                            </div>
+                                <div className={styles["item-buttons-category"]}>
+                                    <button onClick={() => navigate(`/editar_categoria/${categoria.id}`)} className={styles["button-edit-in-list-form-category"]}>
+                                    Editar</button>
+                                    <button
+                                        onClick={() => handleDelete(categoria.id)}
+                                        className={styles["button-delete-in-list-form-category"]}
+                                    >Excluir</button>
+                            </div>
                         </li>
                     ))}
                 </ul>

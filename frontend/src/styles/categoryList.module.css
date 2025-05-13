@@ -40,6 +40,31 @@
     font-family: "Inter", sans-serif;
 }
 
+.item-info-category {
+    flex: 1;
+    font-size: 16px;
+}
+
+.item-buttons-category {
+    display: flex;
+    gap: 10px;
+}
+
+.button-edit-in-list-form-category {
+    background-color: #00a63e;
+    color: #f4f4f5;
+    font-family: "Inter", sans-serif;
+    border: none;
+    border-radius: 4px;
+    padding: 7px;
+    width: 90px;
+}
+.button-edit-in-list-form-category:hover {
+    transition: 0.4s;
+    background-color: #008236;
+    cursor: pointer;
+}
+
 .button-delete-in-list-form-category {
     background-color: #e7000b;
     color: #f4f4f5;
@@ -53,5 +78,5 @@
     transition: 0.4s;
     background-color: #c10007;
     cursor: pointer;
-}
+} 
 
