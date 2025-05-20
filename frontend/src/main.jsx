@@ -7,9 +7,10 @@ import ExpenseForm from './components/expenseForm'
 import EditExpense from './components/editExpense'
 import CategoryList from './components/categoryList.jsx'
 import CategoryEdit from './components/categoryedit.jsx'
+import ExpenseTrackerSPA from './components/SPA_despesas.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  <StrictMode>  
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
@@ -18,6 +19,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/editar_categoria/:id" element={<CategoryEdit/>} />
         <Route path="/cadastrar_despesa" element={<ExpenseForm/>} />
         <Route path="/editar/:id" element={<EditExpense/>} />
+        <Route path="/teste/:id" element={<ExpenseTrackerSPA/>} />
       </Routes>
     </BrowserRouter>
   </StrictMode>
