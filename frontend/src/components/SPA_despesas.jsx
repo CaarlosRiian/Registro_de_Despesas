@@ -328,7 +328,7 @@ function ExpenseTrackerSPA() {
                       <div className={styles.itemActions}>
                         <button
                           onClick={() => handleEditExpense(expense)}
-                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonSuccess}`}
+                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonWarning}`}
                         >
                           Editar
                         </button>

@@ -1,17 +1,15 @@
-/* spaExpenseTracker.module.css */
 @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
 
-/* Base Styles */
 :root {
   --primary-color: #009689;
   --primary-hover: #00786f;
   --primary-dark: #0b4f4a;
-  --secondary-color: #009966;
-  --secondary-hover: #007a55;
-  --success-color: #00a63e;
-  --success-hover: #008236;
-  --danger-color: #e7000b;
-  --danger-hover: #c10007;
+  --success-color: #28a745; /* Verde */
+  --success-hover: #218838;
+  --warning-color: #ffc107; /* Amarelo */
+  --warning-hover: #e0a800;
+  --danger-color: #dc3545; /* Vermelho */
+  --danger-hover: #c82333;
   --bg-color: #1e2939;
   --card-bg: #101828;
   --input-bg: #171717;
@@ -21,7 +19,7 @@
   --transition: 0.4s;
 }
 
-/* Global Styles */
+/* Reset e Estilos Globais */
 body {
   background-color: var(--bg-color);
   font-family: "Inter", sans-serif;
@@ -30,7 +28,7 @@ body {
   padding: 0;
 }
 
-/* Layout */
+/* Container Principal */
 .container {
   width: 100%;
   max-width: 1200px;
@@ -38,6 +36,7 @@ body {
   padding: 20px;
 }
 
+/* Cabeçalho */
 .header {
   text-align: center;
   margin-bottom: 30px;
@@ -45,14 +44,6 @@ body {
   border-bottom: 1px solid var(--primary-color);
 }
 
-.nav {
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-  margin-bottom: 30px;
-}
-
-/* Typography */
 .title {
   font-size: 35px;
   margin-bottom: 20px;
@@ -64,7 +55,38 @@ body {
   margin-bottom: 15px;
 }
 
-/* Buttons */
+/* Sistema de Abas */
+.navTabs {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid var(--primary-color);
+}
+
+.tabButton {
+  padding: 10px 20px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: var(--text-color);
+  cursor: pointer;
+  transition: all var(--transition);
+}
+
+.tabButton:hover {
+  color: var(--primary-color);
+  cursor: pointer; /* Garante que o cursor pointer funcione */
+}
+
+.activeTab {
+  border-bottom-color: var(--primary-color);
+  color: var(--primary-color);
+  font-weight: bold;
+}
+
+/* Botões */
 .button {
   padding: 10px 15px;
   border: none;
@@ -76,38 +98,44 @@ body {
   text-align: center;
   text-decoration: none;
   display: inline-block;
+  color: white; /* Texto sempre branco */
+}
+
+.button:hover {
+  cursor: pointer;
 }
 
 .button-primary {
   background-color: var(--primary-color);
-  color: white;
 }
 
 .button-primary:hover {
   background-color: var(--primary-hover);
 }
 
-.button-secondary {
-  background-color: var(--secondary-color);
-  color: white;
-}
-
-.button-secondary:hover {
-  background-color: var(--secondary-hover);
-}
-
+/* Botões Verdes (Nova Despesa/Nova Categoria) */
 .button-success {
   background-color: var(--success-color);
-  color: white;
 }
 
 .button-success:hover {
   background-color: var(--success-hover);
 }
 
+/* Botões Amarelos (Editar) */
+.button-warning {
+  background-color: var(--warning-color);
+  color: #212529; /* Texto escuro para melhor contraste */
+}
+
+.button-warning:hover {
+  background-color: var(--warning-hover);
+  color: #212529;
+}
+
+/* Botões Vermelhos (Excluir) */
 .button-danger {
   background-color: var(--danger-color);
-  color: white;
 }
 
 .button-danger:hover {
@@ -119,7 +147,7 @@ body {
   font-size: 13px;
 }
 
-/* Forms */
+/* Formulários */
 .form-container {
   max-width: 600px;
   margin: 0 auto;
@@ -136,6 +164,7 @@ body {
 .form-group label {
   display: block;
   margin-bottom: 8px;
+  color: var(--text-color);
 }
 
 .form-control {
@@ -160,8 +189,8 @@ body {
   margin-top: 30px;
 }
 
-/* Lists */
-.list-container {
+/* Listas */
+.list-container, .listSection {
   max-width: 800px;
   margin: 0 auto;
 }
@@ -198,19 +227,32 @@ body {
   gap: 10px;
 }
 
-/* Utility Classes */
-.text-center {
-  text-align: center;
-}
-
-.mt-20 {
-  margin-top: 20px;
-}
-
-.mb-20 {
+/* Cabeçalho das seções */
+.sectionHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 20px;
 }
 
+/* Badge de categoria */
+.categoryBadge {
+  background-color: var(--primary-dark);
+  padding: 3px 8px;
+  border-radius: 12px;
+  font-size: 14px;
+  margin-right: 10px;
+}
+
+/* Valor da despesa */
+.value {
+  margin-left: auto;
+  padding-left: 15px;
+  font-weight: bold;
+  color: var(--danger-color);
+}
+
+/* Mensagens */
 .message {
   padding: 15px;
   border-radius: var(--border-radius);
@@ -219,31 +261,41 @@ body {
 }
 
 .message-success {
-  background-color: rgba(0, 166, 62, 0.2);
+  background-color: rgba(40, 167, 69, 0.2);
   border: 1px solid var(--success-color);
 }
 
 .message-error {
-  background-color: rgba(231, 0, 11, 0.2);
+  background-color: rgba(220, 53, 69, 0.2);
   border: 1px solid var(--danger-color);
 }
 
-/* Responsive Adjustments */
+/* Responsividade */
 @media (max-width: 768px) {
-  .nav {
+  .sectionHeader {
     flex-direction: column;
-    align-items: center;
+    align-items: flex-start;
+    gap: 10px;
   }
   
-  .form-actions, .item-actions {
-    flex-direction: column;
-    gap: 10px;
+  .navTabs {
+    flex-wrap: wrap;
+  }
+  
+  .tabButton {
+    padding: 8px 15px;
+    font-size: 14px;
   }
   
   .list-item {
     flex-direction: column;
     align-items: flex-start;
     gap: 10px;
+  }
+  
+  .value {
+    margin-left: 0;
+    padding-left: 0;
   }
   
   .item-actions {
@@ -253,5 +305,4 @@ body {
   .item-actions .button {
     width: 100%;
   }
-
 }
