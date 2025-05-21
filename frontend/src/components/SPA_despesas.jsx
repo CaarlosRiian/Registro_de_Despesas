@@ -131,7 +131,6 @@ function ExpenseTrackerSPA() {
         setMessage("Categoria cadastrada com sucesso!");
       }
       
-      // Atualizar dados
       const response = await axios.get("http://localhost:8000/api/categorias/");
       setCategories(response.data);
       resetForm();
@@ -159,7 +158,6 @@ function ExpenseTrackerSPA() {
     setShowForm(null);
   };
 
-  // Estados de carregamento
   if (loading) {
     return <div className={styles.loading}>Carregando...</div>;
   }
@@ -197,83 +195,92 @@ function ExpenseTrackerSPA() {
         </button>
       </nav>
 
-      <main className={styles.mainContent}>
-        {/* Formulários */}
+      <div>
         {showForm === "expense" && (
           <div className={styles.formContainer}>
-            <h2 className={styles.subtitle}>
-              {formData.id ? "Editar Despesa" : "Nova Despesa"}
-            </h2>
-            <form onSubmit={handleExpenseSubmit}>
-              <div className={styles.formGroup}>
-                <label>Descrição</label>
-                <input
-                  type="text"
-                  name="descricao"
-                  className={styles.formControl}
-                  value={formData.descricao}
-                  onChange={handleInputChange}
-                  required
-                />
-              </div>
+            <div className={styles["div-new-expense-form"]}>
+              <h2 className={styles["h2-subtitle-new-expense"]}>
+                {formData.id ? "Editar Despesa" : "Nova Despesa"}
+              </h2>
+
+                <form onSubmit={handleExpenseSubmit}>
+                <div className={styles.formGroup}>
+                  <input
+                    type="text"
+                    name="descricao"
+                    placeholder="Descrição"
+                    className={styles["description-input-form-expense"]}
+                    value={formData.descricao}
+                    onChange={handleInputChange}
+                    required
+                  />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  <input
+                    type="number"
+                    name="valor"
+                    placeholder="Valor"
+                    className={styles["value-input-form-expense"]}
+                    value={formData.valor}
+                    onChange={handleInputChange}
+                    required
+                    step="0.01"
+                  />
+                </div>
+                
+                <div className={styles.formGroup}>
+                  {/* <label>Categoria</label> */}
+                  <select
+                    name="categoriaId"
+                    placeholder="Categoria"
+                    className={styles["select-category-form-expense"]}
+                    value={formData.categoriaId}
+                    onChange={handleInputChange}
+                    required
+                  >
+                    <option value="">Selecione uma categoria</option>
+                    {categories.map(cat => (
+                      <option key={cat.id} value={cat.id}>{cat.nome}</option>
+                    ))}
+                  </select>
+                </div>
               
-              <div className={styles.formGroup}>
-                <label>Valor (R$)</label>
-                <input
-                  type="number"
-                  name="valor"
-                  className={styles.formControl}
-                  value={formData.valor}
-                  onChange={handleInputChange}
-                  required
-                  step="0.01"
-                />
-              </div>
-              
-              <div className={styles.formGroup}>
-                <label>Categoria</label>
-                <select
-                  name="categoriaId"
-                  className={styles.formControl}
-                  value={formData.categoriaId}
-                  onChange={handleInputChange}
-                  required
-                >
-                  <option value="">Selecione uma categoria</option>
-                  {categories.map(cat => (
-                    <option key={cat.id} value={cat.id}>{cat.nome}</option>
-                  ))}
-                </select>
-              </div>
-              
-              <div className={styles.formActions}>
-                <button type="submit" className={`${styles.button} ${styles.buttonPrimary}`}>
-                  {formData.id ? "Atualizar" : "Cadastrar"}
-                </button>
-                <button
-                  type="button"
-                  onClick={resetForm}
-                  className={`${styles.button} ${styles.buttonDanger}`}
-                >
-                  Cancelar
-                </button>
-              </div>
-            </form>
+                
+                <div className={styles.formActions}>
+                  <button type="submit" className={styles["button-expense-form"]}>
+                    {formData.id ? "Atualizar" : "Cadastrar"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={resetForm}
+                    className={styles["button-back-home-form-expense"]}
+                  >
+                    Cancelar
+                  </button>
+                </div>
+              </form>
+
+            </div>
+          
           </div>
         )}
+      </div>
+      <main className={styles.mainContent}>
+        {/* Formulários */}
 
         {showForm === "category" && (
           <div className={styles.formContainer}>
-            <h2 className={styles.subtitle}>
+            <h2 className={styles["h2-title-category"]}>
               {formData.id ? "Editar Categoria" : "Nova Categoria"}
             </h2>
             <form onSubmit={handleCategorySubmit}>
               <div className={styles.formGroup}>
-                <label>Nome da Categoria</label>
                 <input
                   type="text"
                   name="nome"
-                  className={styles.formControl}
+                  placeholder="Nome da Categoria"
+                  className={styles["input-edit-category"]}
                   value={formData.nome}
                   onChange={handleInputChange}
                   required
@@ -281,13 +288,13 @@ function ExpenseTrackerSPA() {
               </div>
               
               <div className={styles.formActions}>
-                <button type="submit" className={`${styles.button} ${styles.buttonPrimary}`}>
+                <button type="submit" className={styles["button-register-category"]}>
                   {formData.id ? "Atualizar" : "Cadastrar"}
                 </button>
                 <button
                   type="button"
                   onClick={resetForm}
-                  className={`${styles.button} ${styles.buttonDanger}`}
+                  className={styles["button-back-to-home-category"]}
                 >
                   Cancelar
                 </button>
@@ -309,43 +316,44 @@ function ExpenseTrackerSPA() {
                       resetForm();
                       setShowForm("expense");
                     }}
-                    className={`${styles.button} ${styles.buttonSuccess}`}
+                    className={styles["button_new_expense"]}
                   >
                     + Nova Despesa
                   </button>
                 </div>
                 
                 <ul className={styles.list}>
-                  {expenses.map(expense => (
-                    <li key={expense.id} className={styles.listItem}>
-                      <div className={styles.itemInfo}>
-                        <span className={styles.categoryBadge}>
-                           {expense.categoria.nome} |
-                        </span>
-                        <span> {expense.descricao}</span> -
-                        <span className={styles.value}> R$ {expense.valor}</span>
-                      </div>
-                      <div className={styles.itemActions}>
-                        <button
-                          onClick={() => handleEditExpense(expense)}
-                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonWarning}`}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          onClick={() => handleDeleteExpense(expense.id)}
-                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonDanger}`}
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    </li>
-                  ))}
+                  <div className={styles["div-list-expensee"]}>
+                    {expenses.map(expense => (
+                      <li key={expense.id} className={styles.listItem}>
+                        <div className={styles.itemInfo}>
+                          <span className={styles.categoryBadge}>
+                            {expense.categoria.nome} |
+                          </span>
+                          <span> {expense.descricao}</span> -
+                          <span className={styles["styles-value"]}> R$ {expense.valor}</span>
+                        </div>
+                        <div className={styles["item-buttons-expense"]}>
+                          <button
+                            onClick={() => handleEditExpense(expense)}
+                            className={styles["button-edit-expensee"]}
+                          >
+                            Editar
+                          </button>
+                          <button
+                            onClick={() => handleDeleteExpense(expense.id)}
+                            className={styles["button-delete-in-spa-expense"]}
+                          >
+                            Excluir
+                          </button>
+                        </div>
+                      </li>
+                    ))}
+                  </div>
                 </ul>
               </div>
             )}
 
-            {/* Lista de Categorias */}
             {activeTab === "categories" && (
               <div className={styles.listSection}>
                 <div className={styles.sectionHeader}>
@@ -355,35 +363,36 @@ function ExpenseTrackerSPA() {
                       resetForm();
                       setShowForm("category");
                     }}
-                    className={`${styles.button} ${styles.buttonSuccess}`}
+                    className={styles["button_new_category"]}
                   >
                     + Nova Categoria
                   </button>
                 </div>
-                
-                <ul className={styles.list}>
-                  {categories.map(category => (
-                    <li key={category.id} className={styles.listItem}>
-                      <div className={styles.itemInfo}>
-                        <span>{category.nome}</span>
-                      </div>
-                      <div className={styles.itemActions}>
-                        <button
-                          onClick={() => handleEditCategory(category)}
-                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonSuccess}`}
-                        >
-                          Editar
-                        </button>
-                        <button
-                          onClick={() => handleDeleteCategory(category.id)}
-                          className={`${styles.button} ${styles.buttonSmall} ${styles.buttonDanger}`}
-                        >
-                          Excluir
-                        </button>
-                      </div>
-                    </li>
-                  ))}
-                </ul>
+                  <div className={styles["div-of-list-category"]}>
+                    <ul className={styles.list}>
+                      {categories.map(category => (
+                        <li key={category.id} className={styles.listItem}>
+                          <div className={styles.itemInfo}>
+                            <span>{category.nome}</span>
+                          </div>
+                          <div className={styles["item-buttons-category"]}>
+                            <button
+                              onClick={() => handleEditCategory(category)}
+                              className={styles["button-edit-in-spa"]}
+                            >
+                              Editar
+                            </button>
+                            <button
+                              onClick={() => handleDeleteCategory(category.id)}
+                              className={styles["button-delete-in-spa"]}
+                            >
+                              Excluir
+                            </button>
+                          </div>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
               </div>
             )}
           </>
