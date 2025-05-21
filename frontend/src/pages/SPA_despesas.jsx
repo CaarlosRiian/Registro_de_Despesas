@@ -3,13 +3,12 @@ import axios from "axios";
 import styles from "../styles/spaExpenseTracker.module.css";
 
 function ExpenseTrackerSPA() {
-  // State para despesas e categorias
   const [expenses, setExpenses] = useState([]);
   const [categories, setCategories] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [activeTab, setActiveTab] = useState("expenses"); // 'expenses' ou 'categories'
-  const [showForm, setShowForm] = useState(null); // null, 'expense' ou 'category'
+  const [activeTab, setActiveTab] = useState("expenses"); 
+  const [showForm, setShowForm] = useState(null); 
   const [formData, setFormData] = useState({
     id: "",
     descricao: "",
@@ -19,7 +18,6 @@ function ExpenseTrackerSPA() {
   });
   const [message, setMessage] = useState("");
 
-  // Buscar dados iniciais
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -63,7 +61,6 @@ function ExpenseTrackerSPA() {
     setShowForm("expense");
   };
 
-  // Manipuladores para categorias
   const handleDeleteCategory = async (id) => {
     if (window.confirm("Deseja excluir esta categoria?")) {
       try {
@@ -87,7 +84,6 @@ function ExpenseTrackerSPA() {
     setShowForm("category");
   };
 
-  // Manipuladores de formulário
   const handleExpenseSubmit = async (e) => {
     e.preventDefault();
     try {
@@ -230,7 +226,6 @@ function ExpenseTrackerSPA() {
                 </div>
                 
                 <div className={styles.formGroup}>
-                  {/* <label>Categoria</label> */}
                   <select
                     name="categoriaId"
                     placeholder="Categoria"
@@ -267,7 +262,6 @@ function ExpenseTrackerSPA() {
         )}
       </div>
       <main className={styles.mainContent}>
-        {/* Formulários */}
 
         {showForm === "category" && (
           <div className={styles.formContainer}>
@@ -303,10 +297,8 @@ function ExpenseTrackerSPA() {
           </div>
         )}
 
-        {/* Listas */}
         {!showForm && (
           <>
-            {/* Lista de Despesas */}
             {activeTab === "expenses" && (
               <div className={styles.listSection}>
                 <div className={styles.sectionHeader}>
